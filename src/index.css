@@ -2,39 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Ijobatech Portfolio Design System - All colors MUST be HSL */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Portfolio Brand Colors */
+    --background: 116 62% 95%; /* #EAF9E7 */
+    --foreground: 189 97% 11%; /* #013237 */
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 189 97% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 189 97% 11%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 149 45% 42%; /* #4CA771 */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 115 25% 82%; /* #C0E6BA */
+    --secondary-foreground: 189 97% 11%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 115 25% 82%;
+    --muted-foreground: 189 50% 25%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 115 25% 82%;
+    --accent-foreground: 189 97% 11%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 115 25% 75%;
+    --input: 115 25% 85%;
+    --ring: 149 45% 42%;
+
+    /* Custom Portfolio Tokens */
+    --hero-gradient: linear-gradient(135deg, hsl(var(--background)), hsl(var(--secondary)));
+    --card-gradient: linear-gradient(145deg, hsl(0 0% 100% / 0.9), hsl(var(--secondary) / 0.3));
+    --nav-background: hsl(var(--foreground) / 0.95);
+    --glow-primary: 0 0 40px hsl(var(--primary) / 0.3);
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.2);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --radius: 0.5rem;
 
@@ -101,5 +108,52 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  /* Custom animations and utilities */
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+
+  .hero-float {
+    animation: heroFloat 6s ease-in-out infinite;
+  }
+
+  .skill-bar {
+    animation: fillBar 2s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes heroFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes fillBar {
+    from { width: 0; }
+    to { width: var(--skill-width); }
+  }
+
+  /* Gradient text effect */
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--foreground)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
